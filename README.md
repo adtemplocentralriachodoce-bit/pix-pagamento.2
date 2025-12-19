@@ -1,1 +1,143 @@
 # pix-pagamento.2
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pagamento PIX</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 420px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .subtitle {
+      margin: 10px 0 20px;
+      color: #555;
+    }
+
+    .pix-box {
+      border: 2px dashed #00b894;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .pix-key {
+      font-size: 15px;
+      font-weight: bold;
+      margin-top: 10px;
+      word-break: break-all;
+    }
+
+    .banks {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0;
+    }
+
+    .bank {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 13px;
+      background: #fafafa;
+    }
+
+    .open-bank-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #fff;
+      background: #00b894;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .hint {
+      margin-top: 12px;
+      font-size: 12px;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Pagamento PIX</h1>
+    <div class="subtitle">Escolha como pagar</div>
+
+    <div class="pix-box">
+      Chave PIX (CNPJ)
+      <div class="pix-key">07.836.612/0001-68</div>
+    </div>
+
+    <div class="banks">
+      <div class="bank">Nubank</div>
+      <div class="bank">Inter</div>
+      <div class="bank">Itaú</div>
+      <div class="bank">Bradesco</div>
+      <div class="bank">Banco do Brasil</div>
+      <div class="bank">Santander</div>
+    </div>
+
+    <button class="open-bank-btn" onclick="openBankApp()">
+      Abrir aplicativo do banco
+    </button>
+
+    <div class="hint">
+      Abra o app do seu banco e use esta chave PIX para pagar.
+    </div>
+  </div>
+
+  <script>
+    function openBankApp() {
+      const links = [
+        "nubank://",
+        "itau://",
+        "bradesco://",
+        "bb://",
+        "santander://",
+        "inter://"
+      ];
+
+      links.forEach((link, index) => {
+        setTimeout(() => {
+          window.location.href = link;
+        }, index * 300);
+      });
+
+      setTimeout(() => {
+        alert(
+          "Não foi possível abrir automaticamente.\n" +
+          "Abra o app do seu banco e pague usando a chave PIX."
+        );
+      }, 2500);
+    }
+  </script>
+</body>
+</html>
